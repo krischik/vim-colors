@@ -91,10 +91,10 @@ elseif (&term == "builtin_gui")
     "
     " Group: Diff colors {{{3
     "
-    highlight DiffAdd							    guibg=LightBlue
-    highlight DiffChange						    guibg=LightMagenta
-    highlight DiffDelete	gui=bold		guifg=Blue	    guibg=LightCyan
-    highlight DiffText		gui=bold				    guibg=Red
+    highlight DiffAdd							    guibg=AliceBlue
+    highlight DiffChange						    guibg=seashell
+    highlight DiffDelete	gui=bold		guifg=Blue	    guibg=azure
+    highlight DiffText		gui=bold				    guibg=LavenderBlush
     "
     " Group: Fold colors {{{3
     "
