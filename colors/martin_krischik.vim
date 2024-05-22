@@ -1,8 +1,8 @@
 "-------------------------------------------------------------------------------
 "  Description: My personal colors
-"    Copyright: Copyright (C) 2006 … 2022 Martin Krischik
+"    Copyright: Copyright © 2006 … 2024 Martin Krischik
 "   Maintainer:	Martin Krischik
-"      Version: 4.0
+"      Version: 5.0
 "	  Note:	Tried and Tested for 'builtin_gui', 'xterm' (KDE Konsole)
 "		'vt320'" (OpenVMS) and 'linux' (Linux Console).
 "      History: 16.05.2006 MK Check that all vim 7.0 colors are set
@@ -12,6 +12,7 @@
 "		15.10.2006 MK Bram's suggestion for runtime integration
 "		19.01.2007 MK Better Link Highlight.
 "		13.12.2007 MK Now Cream compatible
+"		20.05.2024 MK Now NVIM und VimR compatible
 "	 Usage: copy to colors directory
 "------------------------------------------------------------------------------
 
@@ -26,14 +27,8 @@ endif
 
 let colors_name = "martin_krischik"
 
-if version < 700
-   " Section: works only with vim 7.0 use default otherwise {{{1
-   "
-   colorscheme default
-   "
-   " }}}1
-   finish
-elseif (&term == "builtin_gui")
+if  (&term == "builtin_gui")   ||	    
+      \ (&term == "nvim")	    
     " Section: Set GUI colors. {{{1
     "
     " Subsection: User-Interface Colors {{{2
@@ -268,13 +263,16 @@ elseif (&term == "builtin_gui")
 
    " }}}1
    finish
-elseif	(&term == "xterm")  ||
-      \ (&term == "vt320")  ||
+elseif	(&term == "xterm")	    ||
+      \ (&term == "xterm-256color") ||
+      \ (&term == "vt320")	    ||	    
       \ (&term == "linux")
     " Section: Only set colors for terminals we actualy know of {{{1
     "
-    if &term=="vt320"
-	set t_Co=8
+    if (&term=="vt320")
+      set t_Co=8
+    elseif (&term=="xterm-256color")
+      set t_Co=256
     else
 	set t_Co=16
     endif
@@ -499,5 +497,5 @@ endif
 "------------------------------------------------------------------------------
 "   Vim is Charityware - see ":help license" or uganda.txt for licence details.
 "------------------------------------------------------------------------------
-" vim: nowrap tabstop=8 shiftwidth=3 softtabstop=3 noexpandtab
+" vim: nowrap tabstop=8 shiftwidth=3 softtabstop=4 noexpandtab
 " vim: filetype=vim foldmethod=marker textwidth=0
